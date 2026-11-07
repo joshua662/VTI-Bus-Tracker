@@ -1,18 +1,19 @@
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { Navigate } from "react-router-dom";
-import AuthField from "./AuthField";
+import AuthField from "../AuthField/AuthField";
 import SubmitButton from "../Button/SubmitButton";
 import { useAuth } from "../../hooks/useAuth";
 import { adminAuthApi } from "../../services/adminApi";
-import RegistrationModal, { type RegistrationForm } from "./RegistrationModal";
+import RegistrationModal from "../RegistrationModal/RegistrationModal";
+import type { AdmissionRegistrationForm } from "../RegistrationModal/authTypes";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import RegistrationSuccessModal from "../RegistrationSuccessModal/RegistrationSuccessModal";
-import AuthPageLayout from "./AuthPageLayout";
+import AuthPageLayout from "../AuthPageLayout/AuthPageLayout";
 import { validateLoginForm } from "../../utils/validateForm";
-import ForgotPasswordModal from "./ForgotPasswordModal";
+import ForgotPasswordModal from "../ForgotPasswordModal/ForgotPasswordModal";
 import { TownLogo } from "./TownLogo";
 
-const emptyForm = (): RegistrationForm => ({
+const emptyForm = (): AdmissionRegistrationForm => ({
     first_name: "",
     middle_name: "",
     last_name: "",
@@ -98,7 +99,7 @@ const AdminLogin = () => {
         try {
             const res = await register({
                 first_name: form.first_name.trim(),
-                middle_name: form.middle_name.trim() || undefined,
+                middle_name: form.middle_name?.trim() || undefined,
                 last_name: form.last_name.trim(),
                 gender: form.gender,
                 birth_date: form.birth_date,
@@ -239,13 +240,7 @@ const AdminLogin = () => {
                 fieldErrors={fieldErrors}
                 loading={registerLoading}
                 onRegister={handleRegister}
-                captchaA={captchaA}
-                captchaB={captchaB}
-                captchaAnswer={captchaAnswer}
-                setCaptchaAnswer={setCaptchaAnswer}
-                captchaError={captchaError}
-                refreshCaptcha={refreshCaptcha}
-                setCaptchaError={setCaptchaError}
+                registrationSuccess={toast.visible && !toast.failed}
             />
         </AuthPageLayout>
     );
