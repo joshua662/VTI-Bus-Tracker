@@ -4,8 +4,8 @@ export default function RegistrationSuccessModal({ isVisible, onClose }) {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-slate-900 border border-white/10 rounded-3xl p-6 max-w-sm w-full text-center text-white shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+      <div className="liquid-glass-card border border-white/20 bg-slate-950/70 p-6 max-w-sm w-full text-center text-white shadow-2xl backdrop-blur-xl">
         <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
           ✓
         </div>

@@ -57,17 +57,17 @@ export default function RegistrationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-slate-900 border border-white/10 rounded-3xl p-6 max-w-lg w-full text-white shadow-2xl max-h-[85vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+      <div className="liquid-glass-card border border-white/20 bg-slate-950/70 p-6 max-w-lg w-full text-white shadow-2xl max-h-[85vh] overflow-y-auto backdrop-blur-xl">
         <div className="flex justify-between items-center mb-4">
           <div>
             <h3 className="text-lg font-bold">Admin Registration</h3>
-            <p className="text-xs text-slate-400">Request administrative credentials</p>
+            <p className="text-xs text-slate-300">Request administrative credentials</p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="text-slate-400 hover:text-white cursor-pointer text-sm"
+            className="text-slate-300 hover:text-white cursor-pointer text-sm"
           >
             ✕
           </button>

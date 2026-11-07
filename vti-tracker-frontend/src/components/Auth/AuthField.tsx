@@ -42,7 +42,7 @@ export default function AuthField({
           onChange={onChange}
           required={required}
           autoFocus={autoFocus}
-          className={`h-12 w-full rounded-xl border bg-[#241c3d]/80 px-4 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] outline-none transition ${
+          className={`h-12 w-full rounded-xl border bg-white/10 px-4 text-sm text-white placeholder-white/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] outline-none backdrop-blur-md transition ${
             passwordToggle ? "pr-11" : ""
           } ${
             invalid

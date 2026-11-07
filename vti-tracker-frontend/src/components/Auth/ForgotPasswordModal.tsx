@@ -16,10 +16,10 @@ export default function ForgotPasswordModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="bg-slate-900 border border-white/10 rounded-3xl p-6 max-w-sm w-full text-white shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+      <div className="liquid-glass-card border border-white/20 bg-slate-950/70 p-6 max-w-sm w-full text-white shadow-2xl backdrop-blur-xl">
         <h3 className="text-lg font-semibold text-center mb-1">Reset Password</h3>
-        <p className="text-xs text-slate-400 text-center mb-5">
+        <p className="text-xs text-slate-300 text-center mb-5">
           Enter your registered admin email address to receive password recovery instructions.
         </p>
 
