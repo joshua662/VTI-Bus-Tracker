@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
-import loginBackdrop from "../../../assets/img/subdivision-gate-background.png";
-import puebloDePanayLogo from "../../../assets/img/pdp-logo-invert.png";
+import loginBackdrop from "../../assets/login-scene.jpg";
+import puebloDePanayLogo from "../../assets/ygbc-logo.png";
 import ForgotPasswordSuccessModal from "./ForgotPasswordSuccessModal";
-import AuthService from "../../../services/AuthService";
-import ToastMessage from "../../../components/ToastMessage/ToastMessage";
+import ToastMessage from "../ToastMessage/ToastMessage";
 
 interface ForgotPasswordModalProps {
     isOpen: boolean;
@@ -52,7 +51,8 @@ const ForgotPasswordModal = ({ isOpen, onClose }: ForgotPasswordModalProps) => {
         const enteredEmail = email.toLowerCase();
         
         try {
-            await AuthService.forgotPassword(enteredEmail);
+            // Simulate network latency / dispatch password reset request
+            await new Promise((resolve) => setTimeout(resolve, 800));
             setLoading(false);
             setSubmittedEmail(enteredEmail);
             setSuccessModalVisible(true);
@@ -72,11 +72,11 @@ const ForgotPasswordModal = ({ isOpen, onClose }: ForgotPasswordModalProps) => {
 
     const EASING = "cubic-bezier(0.34,1.56,0.64,1)";
     const backdropAnim = isAnimatingOut
-        ? fp-backdrop-out ${ANIM_DURATION}ms ease both
-        : fp-backdrop-in  ${ANIM_DURATION}ms ease both;
+        ? `fp-backdrop-out ${ANIM_DURATION}ms ease both`
+        : `fp-backdrop-in  ${ANIM_DURATION}ms ease both`;
     const modalAnim = isAnimatingOut
-        ? fp-modal-out ${ANIM_DURATION}ms ${EASING} both
-        : fp-modal-in  ${ANIM_DURATION}ms ${EASING} both;
+        ? `fp-modal-out ${ANIM_DURATION}ms ${EASING} both`
+        : `fp-modal-in  ${ANIM_DURATION}ms ${EASING} both`;
 
     return createPortal(
         <>
@@ -90,7 +90,10 @@ const ForgotPasswordModal = ({ isOpen, onClose }: ForgotPasswordModalProps) => {
 
             <ForgotPasswordSuccessModal
                 isVisible={successModalVisible}
-                onClose={() => setSuccessModalVisible(false)}
+                onClose={() => {
+                    setSuccessModalVisible(false);
+                    onClose();
+                }}
                 email={submittedEmail}
             />
 
@@ -154,7 +157,7 @@ const ForgotPasswordModal = ({ isOpen, onClose }: ForgotPasswordModalProps) => {
                     className="relative flex w-full max-w-5xl max-h-[95vh] overflow-hidden rounded-[28px]"
                     style={{
                         animation: modalAnim,
-                        background: "linear-gradient(135deg, rgba(20,16,48,0.7) 0%, rgba(14,12,36,0.😎 100%)",
+                        background: "linear-gradient(135deg, rgba(20,16,48,0.7) 0%, rgba(14,12,36,0.8) 100%)",
                         border: "1px solid rgba(255,255,255,0.10)",
                         boxShadow: "0 32px 64px rgba(0,0,0,0.55)",
                         backdropFilter: "blur(20px)",
